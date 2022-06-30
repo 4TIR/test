@@ -1,0 +1,24 @@
+
+<div class=" relative bg-slate-700 min-h-[100vh]">
+    <div class="w-full flex justify-end bg-white">
+        <mat-form-field class="mr-5" appearance="legacy">
+            <mat-label>Search for game</mat-label>
+            <input type="text" matInput placeholder="" (input)="search()"  [formControl]="name">
+            <i class="material-icons" matSuffix>search</i>
+            <ul *ngIf="searchText" class="absolute top-10 px-3 w-full bg-white rounded-b-lg">
+              <li class="mb-2" *ngFor="let item of searchItems">
+               <a [routerLink]="[item.path]">{{item.name}}</a> 
+              </li>
+            </ul>
+          </mat-form-field>
+    </div>
+    <div class="ml-20  p-5 flex flex-wrap justify-center">
+        <ng-container *ngFor="let item of items">
+            <a [routerLink]="[item.path]" class="flex flex-col items-center mr-5  mb-10" > 
+                <img src="{{item.icon}}" alt="" class="w-64 h-64 mb-5 object-cover">
+                <p class="text-white text-lg">{{item.name}}</p>
+            </a>
+        </ng-container>
+    </div>
+
+</div>
